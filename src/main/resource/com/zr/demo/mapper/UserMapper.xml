@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>    
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zr.demo.dao.UserDao">  
+<!-- 定义查询的结果集 -->
+    <resultMap id="BaseResultMap" type="com.zr.model.User">  
+        <id column="USER_ID" property="userId" jdbcType="INTEGER" />  
+        <result column="USER_NAME" property="userName" jdbcType="CHAR" />  
+        <result column="USER_PASSWORD" property="userPassword" jdbcType="CHAR" />  
+        <result column="USER_EMAIL" property="userEmail" jdbcType="CHAR" />  
+    </resultMap> 
+    <!-- 查询单条记录 id和dao层方法名保持一致-->  
+    <select id="selectAllUsers" parameterType="int" resultMap="BaseResultMap">  
+        SELECT * FROM user  
+    </select> 
+    <!-- 查询单条记录 id和dao层方法名保持一致-->  
+    <select id="selectUserById" parameterType="int" resultMap="BaseResultMap">  
+        SELECT * FROM user WHERE USER_ID = #{userId}  
+    </select> 
+</mapper>
